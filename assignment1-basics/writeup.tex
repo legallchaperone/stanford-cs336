@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage{listings}  % for inline code
+\usepackage{hyperref}
+\usepackage{CJKutf8}
+
+
+% Define a simple inline code command
+\newcommand{\code}[1]{\texttt{#1}}
+
+\title{CS336 Assignment 1 Writeup}
+\author{Legallchaperone}
+\date{}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+
+%% ============================================================
+\section*{Problem unicode1: Understanding Unicode}
+%% ============================================================
+
+\subsection*{(a)}
+\code{chr(0)} returns the null character, whose string representation
+is \code{'\textbackslash x00'} (U+0000).
+
+\subsection*{(b)}
+% TODO: 填入 repr vs print 的区别
+The \code{repr()} of the null character displays as \code{'\textbackslash x00'},
+showing the escape sequence, whereas its printed representation is invisible
+(nothing appears on screen).
+
+\subsection*{(c)}
+% TODO: 填入 null character 在文本中的行为
+The null character is invisible when printed and does not appear as whitespace;
+it is silently embedded in the string and may act as a string terminator
+in some systems.
+
+%% ============================================================
+\section*{Problem unicode2: Unicode Encodings}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: UTF-8 vs UTF-16/UTF-32 的优势
+The UTF-16/UTF-32 encodes the same character with longer bytes, which is inefficient, compared to UTF-8.
+
+\subsection*{(b)}
+% TODO: decode_utf8_bytes_to_str_wrong 为什么错，给一个反例
+This is wrong because it can only decode one byte at a time, but some characters may be decoded into multiple bytes. Also, some single byte cannot be decoded back to any character.
+One counter example input is \code{"牛".encode("utf-8")}.
+\subsection*{(c)}
+% TODO: 给一个无法解码的两字节序列，解释原因
+\code{b'\xe7\x89'}
+Simply not defined.
+\section*{Problem train\_bpe: BPE Tokenizer Training}
+%% ============================================================
+% TODO: 主要是代码实现，无书面回答
+
+%% ============================================================
+\section*{Problem train\_bpe\_tinystories}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: 训练时间、内存用量、最长 token 是什么
+
+\subsection*{(b)}
+% TODO: profiling 结果，哪部分最慢
+
+%% ============================================================
+\section*{Problem train\_bpe\_expts\_owt}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: OWT 最长 token
+
+\subsection*{(b)}
+% TODO: TinyStories vs OWT tokenizer 的比较
+
+%% ============================================================
+\section*{Problem tokenizer\_experiments}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: 压缩比 bytes/token
+
+\subsection*{(b)}
+% TODO: 用 TinyStories tokenizer 处理 OWT 的结果
+
+\subsection*{(c)}
+% TODO: throughput 估计，处理 Pile 需要多久
+
+\subsection*{(d)}
+% TODO: 为什么 uint16 合适
+
+%% ============================================================
+\section*{Problem transformer\_accounting}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: GPT-2 XL 参数量和内存
+
+\subsection*{(b)}
+% TODO: FLOPs 列表和总计
+
+\subsection*{(c)}
+% TODO: 哪部分 FLOPs 最多
+
+\subsection*{(d)}
+% TODO: 不同 GPT-2 size 的 FLOPs 分布对比
+
+\subsection*{(e)}
+% TODO: context length 增大到 16384 的影响
+
+%% ============================================================
+\section*{Problem learning\_rate\_tuning}
+%% ============================================================
+% TODO: 不同学习率下 loss 的行为
+
+%% ============================================================
+\section*{Problem adamwAccounting}
+%% ============================================================
+
+\subsection*{(a)}
+% TODO: 内存分解公式
+
+\subsection*{(b)}
+% TODO: GPT-2 XL 具体数值，最大 batch size
+
+\subsection*{(c)}
+% TODO: AdamW 每步 FLOPs
+
+\subsection*{(d)}
+% TODO: 训练 GPT-2 XL 需要多少天
+
+%% ============================================================
+\section*{Problem learning\_rate / batch\_size\_experiment}
+%% ============================================================
+% TODO: 学习率 sweep 和 batch size 实验的学习曲线和分析
+% (可插入图片: \includegraphics[width=\linewidth]{fig.png})
+
+%% ============================================================
+\section*{Problem generate}
+%% ============================================================
+% TODO: 生成的文本 dump 和流畅度分析
+
+%% ============================================================
+\section*{Ablations}
+%% ============================================================
+
+\subsection*{layer\_norm\_ablation}
+% TODO
+
+\subsection*{pre\_norm\_ablation}
+% TODO
+
+\subsection*{no\_pos\_emb}
+% TODO
+
+\subsection*{swiglu\_ablation}
+% TODO
+
+%% ============================================================
+\section*{Problem main\_experiment (OpenWebText)}
+%% ============================================================
+% TODO
+
+%% ============================================================
+\section*{Problem leaderboard}
+%% ============================================================
+% TODO
+\end{CJK}
+\end{document}
