@@ -161,16 +161,3 @@ cython_debug/
 
 .ruff_cache/
 *.zip
-
-# LaTeX generated files
-*.aux
-*.log
-*.out
-*.toc
-*.bbl
-*.blg
-*.fls
-*.fdb_latexmk
-
-# Data
-data/
